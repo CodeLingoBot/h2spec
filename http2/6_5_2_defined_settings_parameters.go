@@ -123,7 +123,7 @@ func DefinedSETTINGSParameters() *spec.TestGroup {
 			}
 			conn.WriteSettings(setting)
 
-			data := [8]byte{}
+			var data [8]byte
 			conn.WritePing(false, data)
 
 			return spec.VerifyPingFrameWithAck(conn, data)

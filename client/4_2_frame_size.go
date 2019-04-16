@@ -40,7 +40,7 @@ func FrameSize() *spec.ClientTestGroup {
 			data := spec.DummyString(conn.MaxFrameSize())
 			conn.WriteData(req.StreamID, true, []byte(data))
 
-			pingData := [8]byte{}
+			var pingData [8]byte
 			conn.WritePing(false, pingData)
 
 			return spec.VerifyPingFrameWithAck(conn, pingData)

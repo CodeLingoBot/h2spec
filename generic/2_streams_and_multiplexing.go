@@ -29,7 +29,7 @@ func StreamsAndMultiplexing() *spec.TestGroup {
 			}
 			conn.WritePriority(1, pp)
 
-			data := [8]byte{}
+			var data [8]byte
 			conn.WritePing(false, data)
 
 			return spec.VerifyPingFrameWithAck(conn, data)
@@ -148,7 +148,7 @@ func StreamsAndMultiplexing() *spec.TestGroup {
 
 			conn.WriteRSTStream(streamID, http2.ErrCodeCancel)
 
-			data := [8]byte{}
+			var data [8]byte
 			conn.WritePing(false, data)
 
 			return spec.VerifyPingFrameWithAck(conn, data)
@@ -192,7 +192,7 @@ func StreamsAndMultiplexing() *spec.TestGroup {
 			}
 			conn.WritePriority(streamID, pp)
 
-			data := [8]byte{}
+			var data [8]byte
 			conn.WritePing(false, data)
 
 			return spec.VerifyPingFrameWithAck(conn, data)

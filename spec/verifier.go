@@ -76,7 +76,7 @@ func VerifyConnectionError(conn *Conn, codes ...http2.ErrCode) error {
 	}
 
 	if !passed {
-		expected := []string{}
+		var expected []string
 		for _, code := range codes {
 			expected = append(expected, fmt.Sprintf(ExpectedGoAwayFrame, code))
 		}
@@ -121,7 +121,7 @@ func VerifyStreamError(conn *Conn, codes ...http2.ErrCode) error {
 	}
 
 	if !passed {
-		expected := []string{}
+		var expected []string
 		for _, code := range codes {
 			expected = append(expected, fmt.Sprintf(ExpectedGoAwayFrame, code))
 			expected = append(expected, fmt.Sprintf(ExpectedRSTStreamFrame, code))

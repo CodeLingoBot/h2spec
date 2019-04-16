@@ -26,7 +26,7 @@ func WindowUpdate() *spec.TestGroup {
 
 			conn.WriteWindowUpdate(0, 1)
 
-			data := [8]byte{}
+			var data [8]byte
 			conn.WritePing(false, data)
 
 			return spec.VerifyPingFrameWithAck(conn, data)

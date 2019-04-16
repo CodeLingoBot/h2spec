@@ -28,7 +28,7 @@ func ExtendingHTTP2() *spec.TestGroup {
 			conn.Send([]byte("\x00\x00\x08\x16\x00\x00\x00\x00\x00"))
 			conn.Send([]byte("\x00\x00\x00\x00\x00\x00\x00\x00"))
 
-			data := [8]byte{}
+			var data [8]byte
 			conn.WritePing(false, data)
 
 			return spec.VerifyPingFrameWithAck(conn, data)

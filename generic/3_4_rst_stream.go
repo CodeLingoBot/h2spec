@@ -36,7 +36,7 @@ func RSTStream() *spec.TestGroup {
 
 			conn.WriteRSTStream(streamID, http2.ErrCodeCancel)
 
-			data := [8]byte{}
+			var data [8]byte
 			conn.WritePing(false, data)
 
 			return spec.VerifyPingFrameWithAck(conn, data)
